@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import cz.su.bibliosu.tests.bibtex.BiBTeXEntryTest;
-
 /**
  * An activity representing a list of Items. This activity has different
  * presentations for handset and tablet-size devices. On handsets, the activity
@@ -49,7 +47,6 @@ public class ItemListActivity extends FragmentActivity
 					R.id.item_list)).setActivateOnItemClick(true);
 		}
 
-		BiBTeXEntryTest.run();
 		// TODO: If exposing deep links into your app, handle intents here.
 	}
 

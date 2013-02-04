@@ -15,6 +15,10 @@ import java.util.TreeMap;
  * This class implements the Comparable interface so that the natural
  * order of the BiBTeXEntries is defined. Naturally the entries are
  * sorted by their cite-keys lexicographically.
+ *
+ * @author Strašlivý Uragán
+ * @version 1.0
+ * @since 1.0
  */
 public class BiBTeXEntry implements Comparable<BiBTeXEntry>
 {
@@ -72,6 +76,17 @@ public class BiBTeXEntry implements Comparable<BiBTeXEntry>
         return tags.get(name);
     }
 
+    /** Checks if the entry contains tag with given name.
+     *
+     * @param name Name of tag which should be checked for presence.
+     *
+     * @return True if tag with <code>name</code> is contained within
+     * this entry, false otherwise.
+     */
+    public boolean containsTag(String name) {
+        return tags.containsKey(name);
+    }
+
     /** Sets the type of this entry.
      *
      * @param entryType New type of this entry.
@@ -124,7 +139,7 @@ public class BiBTeXEntry implements Comparable<BiBTeXEntry>
         return tags.size();
     }
 
-    /** Compares thie entry to the given one. This comparator defines
+    /** Compares this entry to the given one. This comparator defines
      * natural order of BiBTeXEntries, which is by their cite-key.
      *
      * @param entry Entry to compare to. 
@@ -132,7 +147,7 @@ public class BiBTeXEntry implements Comparable<BiBTeXEntry>
     @Override
     public int compareTo(BiBTeXEntry entry)
 	{
-		return getEntryType().compareTo(entry.getEntryType());
+		return getCiteKey().compareTo(entry.getCiteKey());
 	}
 
 	/** Compares this object to the given one. First checks if <code>object</code> is also a BiBTeXEntry.
@@ -166,6 +181,16 @@ public class BiBTeXEntry implements Comparable<BiBTeXEntry>
                 }
             }
 			return true;
+        }
+
+    /** Returns the string representation of this object.
+     *
+     * @return The string representation of this object.
+     */
+    @Override
+        public String toString() {
+            return getClass().getName() + " [" + getEntryType() + ", " + getCiteKey() + ", "
+                + numberOfTags() + "]";
         }
 }
 
